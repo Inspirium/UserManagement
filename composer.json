@@ -7,11 +7,23 @@
         "UserManagement"
     ],
     "homepage": "https://github.com/Inspirium/UserManagement",
-    "license": "GPLv2",
+    "license": "GPLv3",
     "authors": [
         {
             "name": "Marko Banušić",
             "email": "marko@inspirium.hr",
+            "homepage": "https://inspirium.hr",
+            "role": "Developer"
+        },
+        {
+            "name": "Stjepan Drmić",
+            "email": "stjepan@inspirium.hr",
+            "homepage": "https://inspirium.hr",
+            "role": "Developer"
+        },
+        {
+            "name": "Siniša Kravaršćan",
+            "email": "sinisa@inspirium.hr",
             "homepage": "https://inspirium.hr",
             "role": "Developer"
         }
