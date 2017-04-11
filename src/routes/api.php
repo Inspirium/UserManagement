@@ -11,7 +11,7 @@
 
 use Illuminate\Http\Request;
 
-
+/*
 Route::group(['middleware' => ['api']], function (Request $request) {
 
     Route::any('login', function() {});
@@ -24,4 +24,4 @@ Route::group(['middleware' => ['api']], function (Request $request) {
     });
 
 
-});
+});*/
