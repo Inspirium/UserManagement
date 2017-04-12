@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function roles() {
+        return $this->belongsToMany('Inspirium\UserManagement\Models\Role', 'users_roles');
+    }
+
+    public function hasRole($check) {
+        return in_array($check, array_pluck($this->roles->toArray(), 'name'));
+    }
 }
