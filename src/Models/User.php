@@ -4,10 +4,13 @@ namespace Inspirium\UserManagement\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Phoenix\EloquentMeta\MetaTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, MetaTrait;
+
+    protected $meta_model = 'user_meta';
 
     /**
      * The attributes that are mass assignable.
