@@ -44,6 +44,6 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view(env('TEMPLATE') . '::auth.login');
+        return view(config('app.template') . '::auth.login');
     }
 }

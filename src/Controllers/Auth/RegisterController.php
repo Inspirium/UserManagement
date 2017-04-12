@@ -76,6 +76,6 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view(env('TEMPLATE') . '::auth.register');
+        return view(config('app.template') . '::auth.register');
     }
 }
