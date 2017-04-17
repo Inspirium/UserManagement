@@ -35,12 +35,23 @@ class UserController extends Controller {
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
-
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-        ]);
+        if ($id) {
+            $user = User::find($id);
+            if (!$user) {
+                //TODO:throw error
+            }
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = bcrypt($request->input('password'));
+            $user->save();
+        }
+        else {
+            $user = User::create( [
+                'name'     => $request->input( 'name' ),
+                'email'    => $request->input( 'email' ),
+                'password' => bcrypt( $request->input( 'password' ) ),
+            ] );
+        }
 
         return redirect('user/show/' . $user->id);
     }
