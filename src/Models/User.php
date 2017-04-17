@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable, MetaTrait;
 
-    protected $meta_model = 'user_meta';
+    protected $meta_model = 'Inspirium\UserManagement\Models\UserModelMeta';
 
     /**
      * The attributes that are mass assignable.
