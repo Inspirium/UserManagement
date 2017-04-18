@@ -6,6 +6,18 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Phoenix\EloquentMeta\MetaTrait;
 
+/**
+ * Class User
+ * @package Inspirium\UserManagement\Models
+ *
+ * @property $id
+ * @property $name
+ * @property $email
+ * @property $password
+ * @property $remember_token
+ * @property $created_at
+ * @property $updated_at
+ */
 class User extends Authenticatable
 {
     use Notifiable, MetaTrait;
