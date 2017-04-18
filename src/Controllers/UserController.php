@@ -33,7 +33,7 @@ class UserController extends Controller {
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => ($id?'':'required|').'min:6|confirmed',
         ]);
         if ($id) {
             $user = User::find($id);
@@ -42,7 +42,9 @@ class UserController extends Controller {
             }
             $user->name = $request->input('name');
             $user->email = $request->input('email');
-            $user->password = bcrypt($request->input('password'));
+            if ($request->has('password')) {
+                $user->password = bcrypt( $request->input( 'password' ) );
+            }
             $user->save();
         }
         else {
