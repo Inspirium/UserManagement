@@ -38,9 +38,9 @@ Route::group(['namespace' => 'Inspirium\UserManagement\Controllers', 'middleware
 
             Route::group(['prefix' => 'role'], function() {
                 Route::get('/', 'RoleController@showRoles');
-                Route::get('/edit/{id}', 'RoleController@showRole');
+                Route::get('/edit/{id?}', 'RoleController@showRole');
                 Route::get('/delete/{id}', 'RoleController@deleteRole');
-                Route::post('/edit/{id}', 'RoleController@submitRole');
+                Route::post('/edit/{id?}', 'RoleController@submitRole');
             });
         });
 
