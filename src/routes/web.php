@@ -27,10 +27,22 @@ Route::group(['namespace' => 'Inspirium\UserManagement\Controllers', 'middleware
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
     Route::group(['middleware' => 'auth'], function() {
-        Route::get('users', 'UserController@showUsers');
-        Route::get('user/show/{id}', 'UserController@showUser');
-        Route::get('user/edit/{id?}', 'UserController@showEditForm');
-        Route::post('user/edit/{id?}', 'UserController@submitUser');
-        Route::get('user/delete/{id}', 'UserController@deleteUser');
+        Route::group(['prefix' => 'user'], function() {
+            Route::get('/', 'UserController@showUsers');
+            Route::get('show/{id}', 'UserController@showUser');
+            Route::get('edit/{id?}', 'UserController@showEditForm');
+            Route::post('edit/{id?}', 'UserController@submitUser');
+            Route::get('delete/{id}', 'UserController@deleteUser');
+            Route::get('roles/{id}', 'UserController@showUserRoles');
+            Route::post('roles/{id}', 'UserController@updateUserRoles');
+
+            Route::group(['prefix' => 'role'], function() {
+                Route::get('/', 'RoleController@showRoles');
+                Route::get('/edit/{id}', 'RoleController@showRole');
+                Route::get('/delete/{id}', 'RoleController@deleteRole');
+                Route::post('/edit/{id}', 'RoleController@submitRole');
+            });
+        });
+
     });
 });

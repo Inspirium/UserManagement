@@ -1,9 +1,10 @@
 <?php
 
-namespace Inspirium\UserManagement\Models;
+namespace Inspirium\UserManagement\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Inspirium\UserManagement\Models\Role;
 
 class RoleController extends Controller {
 
@@ -13,13 +14,8 @@ class RoleController extends Controller {
     }
 
     public function showRole($id = null) {
-        if ($id) {
-            $role = Role::findOrFail( $id );
-        }
-        else {
-            $role = new Role();
-        }
-        return view(config('app.template') . '::user.role.edit', ['role', $role]);
+        $role = Role::firstOrNew(['id' => $id]);
+        return view(config('app.template') . '::user.role.edit', ['role' => $role]);
     }
 
     public function submitRole(Request $request, $id = null) {
@@ -28,20 +24,11 @@ class RoleController extends Controller {
             'description' => 'required'
         ]);
 
-        if ($id) {
-            /** @var Role $role */
-            $role = Role::findOrFail( $id );
-            $role->name = $request->input('name');
-            $role->description = $request->input('description');
-            $role->save();
-        }
-        else {
-            $role = Role::create([
-                'name' => $request->input('name'),
-                'description' => $request->input('description')
-            ]);
-        }
-        return redirect('user/roles', ['role' => $role]);
+        $role = Role::updateOrCreate(['id' => $id], [
+            'name' => $request->input('name'),
+            'description' => $request->input('description')
+        ]);
+        return redirect('user/roles');
     }
 
     public function deleteRole($id) {
