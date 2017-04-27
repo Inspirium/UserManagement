@@ -11,8 +11,21 @@ use Inspirium\UserManagement\Models\User;
 class UserController extends Controller {
 
     public function showUsers() {
-        $users = User::all();
-        return view(config('app.template') . '::user.list', ['users' => $users]);
+        $elements = User::all();
+        $columns = [
+            'name' => 'Name',
+            'email' => 'Email'
+        ];
+        $strings = [
+            "title" => "Users",
+            "add_new" => "Add New User",
+        ];
+        $links = [
+            'add_new' => url('user/edit'),
+            'edit' => url('user/edit/'),
+            'delete' => url('user/delete/')
+        ];
+        return view(config('app.template') . '::vue.table-search', compact( 'elements', 'columns', 'strings', 'links' ));
     }
 
     public function showUser($id) {
