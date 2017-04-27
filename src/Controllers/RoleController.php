@@ -9,8 +9,21 @@ use Inspirium\UserManagement\Models\Role;
 class RoleController extends Controller {
 
     public function showRoles() {
-        $roles = Role::all();
-        return view(config('app.template') . '::user.role.list', ['roles' => $roles]);
+        $elements = Role::all();
+        $columns = [
+            'name' => 'Name',
+            'description' => 'Description'
+        ];
+        $strings = [
+            'title' => 'Roles',
+            'add_new' => 'Add New Roles',
+        ];
+        $links = [
+            'add_new' => url('user/role/edit'),
+            'edit' => url('user/role/edit/'),
+            'delete' => url('user/role/delete/')
+        ];
+        return view(config('app.template') . '::vue.table-search', compact( 'elements', 'columns', 'strings', 'links' ));
     }
 
     public function showRole($id = null) {
