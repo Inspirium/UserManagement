@@ -4,6 +4,7 @@ namespace Inspirium\UserManagement\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 use Phoenix\EloquentMeta\MetaTrait;
 
 /**
@@ -20,7 +21,7 @@ use Phoenix\EloquentMeta\MetaTrait;
  */
 class User extends Authenticatable
 {
-    use Notifiable, MetaTrait;
+    use Notifiable, MetaTrait, HasApiTokens;
 
     protected $meta_model = 'Inspirium\UserManagement\Models\UserModelMeta';
 
