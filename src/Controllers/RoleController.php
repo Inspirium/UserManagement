@@ -11,8 +11,8 @@ class RoleController extends Controller {
     public function showRoles() {
         $elements = Role::all();
         $columns = [
-            'name' => 'Name',
-            'description' => 'Description'
+            'name' => [ 'title' => 'Name' ],
+            'description' => [ 'title' => 'Description' ]
         ];
         $strings = [
             'title' => 'Roles',

@@ -13,8 +13,8 @@ class UserController extends Controller {
     public function showUsers() {
         $elements = User::all();
         $columns = [
-            'name' => 'Name',
-            'email' => 'Email'
+            'name' => [ 'title' => 'Name' ],
+            'email' => [ 'title' => 'Email' ]
         ];
         $strings = [
             "title" => "Users",
