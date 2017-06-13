@@ -19,9 +19,9 @@ class RoleController extends Controller {
             'add_new' => 'Add New Roles',
         ];
         $links = [
-            'add_new' => url('user/role/edit'),
-            'edit' => url('user/role/edit/'),
-            'delete' => url('user/role/delete/')
+            'add_new' => url('administration/role/edit'),
+            'edit' => url('administration/role/edit/'),
+            'delete' => url('administration/role/delete/')
         ];
         return view(config('app.template') . '::vue.table-search', compact( 'elements', 'columns', 'strings', 'links' ));
     }
