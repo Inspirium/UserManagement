@@ -23,7 +23,8 @@ class UserController extends Controller {
         $links = [
             'add_new' => url('administration/user/edit'),
             'edit' => url('administration/user/edit/'),
-            'delete' => url('administration/user/delete/')
+            'delete' => url('administration/user/delete/'),
+	        'show' => url('administration/user/show/')
         ];
         return view(config('app.template') . '::vue.table-search', compact( 'elements', 'columns', 'strings', 'links' ));
     }
