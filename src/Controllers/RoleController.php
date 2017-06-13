@@ -41,11 +41,11 @@ class RoleController extends Controller {
             'name' => $request->input('name'),
             'description' => $request->input('description')
         ]);
-        return redirect('user/roles');
+        return redirect('administration/roles');
     }
 
     public function deleteRole($id) {
         Role::destroy($id);
-        return redirect('user/roles');
+        return redirect('administration/roles');
     }
 }

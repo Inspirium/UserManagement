@@ -69,12 +69,12 @@ class UserController extends Controller {
             ] );
         }
 
-        return redirect('user/show/' . $user->id);
+        return redirect('administration/user/show/' . $user->id);
     }
 
     public function deleteUser($id) {
         User::destroy($id);
-        return redirect('users');
+        return redirect('administration/users');
     }
 
     public function showUserRoles($id) {
@@ -88,6 +88,6 @@ class UserController extends Controller {
         $user = User::findOrFail($id);
         $user->roles()->sync($request->input('roles'));
         $user->save();
-        return redirect('user/show/'.$user->id);
+        return redirect('administration/user/show/'.$user->id);
     }
 }
