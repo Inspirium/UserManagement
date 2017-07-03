@@ -43,11 +43,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends = ['image'];
+
     public function roles() {
         return $this->belongsToMany('Inspirium\UserManagement\Models\Role', 'users_roles');
     }
 
     public function hasRole($check) {
         return in_array($check, array_pluck($this->roles->toArray(), 'name'));
+    }
+
+    public function getImageAttribute() {
+    	return 'https://www.gravatar.com/avatar/' . md5( $this->email ) . '?s=50&d=wavatar';
     }
 }
