@@ -45,6 +45,8 @@ class User extends Authenticatable
 
     protected $appends = ['image'];
 
+    protected $guarded = [];
+
     public function roles() {
         return $this->belongsToMany('Inspirium\UserManagement\Models\Role', 'users_roles');
     }
@@ -55,5 +57,9 @@ class User extends Authenticatable
 
     public function getImageAttribute() {
     	return 'https://www.gravatar.com/avatar/' . md5( $this->email ) . '?s=50&d=wavatar';
+    }
+
+    public function tasks() {
+    	return $this->belongsToMany('Inspirium\TaskManagement\Models\Task', 'tasks_users', 'user_id', 'task_id');
     }
 }
