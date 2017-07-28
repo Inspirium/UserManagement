@@ -59,7 +59,7 @@ class User extends Authenticatable
     	return 'https://www.gravatar.com/avatar/' . md5( $this->email ) . '?s=50&d=wavatar';
     }
 
-    public function tasks() {
-    	return $this->belongsToMany('Inspirium\TaskManagement\Models\Task', 'tasks_users', 'user_id', 'task_id');
+    public function employee() {
+    	return $this->hasOne('Inspirium\HumanResources\Models\Employee');
     }
 }
