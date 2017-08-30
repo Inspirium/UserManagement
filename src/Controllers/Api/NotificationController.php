@@ -8,7 +8,7 @@ class NotificationController extends Controller {
 
     public function getNotifications() {
         $user = \Auth::user();
-        $notifications = $user->unreadNotifications();
+        $notifications = $user->notifications;
         return response()->json($notifications);
     }
 }
