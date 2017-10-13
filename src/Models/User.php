@@ -7,16 +7,29 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
 /**
- * Class User
- * @package Inspirium\UserManagement\Models
+ * Inspirium\UserManagement\Models\User
  *
- * @property $id
- * @property $name
- * @property $email
- * @property $password
- * @property $remember_token
- * @property $created_at
- * @property $updated_at
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string|null $remember_token
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
+ * @property-read \Inspirium\HumanResources\Models\Employee $employee
+ * @property-read mixed $image
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Inspirium\UserManagement\Models\Role[] $roles
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\UserManagement\Models\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\UserManagement\Models\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\UserManagement\Models\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\UserManagement\Models\User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\UserManagement\Models\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\UserManagement\Models\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\UserManagement\Models\User whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class User extends Authenticatable
 {
